@@ -18,7 +18,7 @@ public class PostController {
     this.postService = postService;
   }
 
-  @GetMapping("/")
+  @GetMapping()
   public List<Post> getAll() {
     return postService.getAll();
   }
