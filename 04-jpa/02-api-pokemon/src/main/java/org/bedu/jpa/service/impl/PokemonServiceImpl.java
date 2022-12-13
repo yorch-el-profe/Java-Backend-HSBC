@@ -1,6 +1,7 @@
 package org.bedu.jpa.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.bedu.jpa.entity.Pokemon;
 import org.bedu.jpa.repository.IPokemonRepository;
@@ -24,7 +25,12 @@ public class PokemonServiceImpl implements IPokemonService {
   }
 
   @Override
-  public Pokemon getOneByNumber(int number) {
+  public Optional<Pokemon> getOneByNumber(int number) {
     return repository.findOneByNumber(number);
+  }
+
+  @Override
+  public Pokemon create(Pokemon data) {
+    return repository.save(data);
   }
 }

@@ -5,6 +5,9 @@ import org.bedu.jpa.repository.ITrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+
 import org.bedu.jpa.entity.Pokemon;
 import org.bedu.jpa.entity.Trainer;
 
@@ -22,9 +25,9 @@ public class Seeder implements CommandLineRunner {
 
   @Override
   public void run(String[] args) {
-    Pokemon pikachu = pokemonRepository.findOneByNumber(25);
+    Optional<Pokemon> pikachu = pokemonRepository.findOneByNumber(25);
 
-    if (pikachu == null) {
+    if (pikachu.isEmpty()) {
       Pokemon p = new Pokemon();
       p.setName("Pikachu");
       p.setNumber(25);
