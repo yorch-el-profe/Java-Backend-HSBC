@@ -13,7 +13,7 @@ public interface CourseService {
 
   CourseDTO save(CourseDTO data);
 
-  void update(long id, CourseDTO data);
+  void update(long id, CourseDTO data) throws Exception;
 
-  void delete(long id);
+  void delete(long id) throws Exception;
 }

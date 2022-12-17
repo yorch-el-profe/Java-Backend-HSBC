@@ -40,13 +40,13 @@ public class CourseController {
 
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void update(@PathVariable("id") long id, @RequestBody CourseDTO data) {
+  public void update(@PathVariable("id") long id, @RequestBody CourseDTO data) throws Exception {
     service.update(id, data);
   }
 
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable("id") long id) {
+  public void delete(@PathVariable("id") long id) throws Exception {
     service.delete(id);
   }
 }

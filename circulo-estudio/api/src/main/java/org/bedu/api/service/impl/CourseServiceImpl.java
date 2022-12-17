@@ -49,11 +49,27 @@ public class CourseServiceImpl implements CourseService {
     return mapper.toDTO(repository.save(entity));
   }
 
-  public void update(long id, CourseDTO data) {
+  public void update(long id, CourseDTO data) throws Exception {
+    Optional<Course> result = repository.findById(id);
 
+    if (result.isEmpty()) {
+      throw new Exception("No existe curso");
+    }
+
+    Course course = result.get();
+
+    course.setName(data.getName());
+
+    repository.save(course);
   }
 
-  public void delete(long id) {
+  public void delete(long id) throws Exception {
+    Optional<Course> result = repository.findById(id);
 
+    if (result.isEmpty()) {
+      throw new Exception("No existe curso");
+    }
+
+    repository.deleteById(id);
   }
 }
